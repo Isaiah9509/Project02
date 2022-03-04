@@ -33,10 +33,25 @@ public class Purchase {
     @JsonIgnore
     private User owner;
 
+
     @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL)
     private List<Ticket> tickets = new ArrayList<Ticket>();
 
+    public int getId() {
+        return id;
+    }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public void setPurchasePrice(double purchasePrice) {
+        this.purchasePrice = purchasePrice;
+    }
 
     public Purchase() {}
 

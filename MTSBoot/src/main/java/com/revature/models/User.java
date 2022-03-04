@@ -7,6 +7,13 @@ import java.util.List;
 @Entity
 @Table(name="users")
 public class User {
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
 
     //Database Values
     @Id

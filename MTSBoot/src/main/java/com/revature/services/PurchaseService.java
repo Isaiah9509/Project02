@@ -36,7 +36,6 @@ public class PurchaseService {
         Date date = new Date(System.currentTimeMillis());
         newPurchase.setPurchaseDate(date);
         newPurchase.setPrice(purchase.getPrice(purchase));
-        newPurchase.setOwner(purchase.getOwner());
         newPurchase.setTickets(purchase.getTickets());
         //before returning, you should delete from saved tickets
 
