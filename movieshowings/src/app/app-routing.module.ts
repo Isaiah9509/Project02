@@ -7,6 +7,7 @@ import { RegisterComponent } from './components/register/register.component';
 import { SavedTicketsComponent } from './components/saved-tickets/saved-tickets.component';
 import { PurchaseComponent } from './components/purchase/purchase.component';
 import { MainPageComponent } from './components/main-page/main-page.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 const routes = 
     [

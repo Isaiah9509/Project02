@@ -2,7 +2,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { IUser } from 'src/app/interfaces/IUser';
 
 @Component({
-  selector: 'user-update',
+  selector: 'update-user',
   templateUrl: './update-user.component.html',
   styleUrls: ['./update-user.component.css']
 })
