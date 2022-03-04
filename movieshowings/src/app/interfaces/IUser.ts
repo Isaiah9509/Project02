@@ -1,4 +1,5 @@
 import { IPurchase } from "../interfaces/IPurchase";
+import { ITicket } from "./ITicket";
 
 export interface IUser {
     id?: string;
@@ -7,4 +8,5 @@ export interface IUser {
     email: string;
     password: string;
     purchases?:IPurchase;
+    tickets?:ITicket;
 }

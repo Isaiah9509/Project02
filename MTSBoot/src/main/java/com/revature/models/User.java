@@ -33,7 +33,6 @@ public class User {
     private List<Purchase> purchases = new ArrayList<>();
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
-    @JsonIgnore
     private List<Ticket> tickets = new ArrayList<>();
 
     public User(){
@@ -47,17 +46,14 @@ public class User {
         this.password = password;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", first='" + first + '\'' +
-                ", last='" + last + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", purchases=" + purchases +
-                ", tickets=" + tickets +
-                '}';
+    public User(int id, String first, String last, String email, String password, List<Purchase> purchases, List<Ticket> tickets) {
+        this.id = id;
+        this.first = first;
+        this.last = last;
+        this.email = email;
+        this.password = password;
+        this.purchases = purchases;
+        this.tickets = tickets;
     }
 
     public int getId() {
