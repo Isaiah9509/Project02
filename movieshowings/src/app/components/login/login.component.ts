@@ -45,15 +45,10 @@ export class LoginComponent implements OnInit {
     }
 
     });
-<<<<<<< HEAD
       this.userService.user$.next(this.userService.user);
       // window.location.href="/main-page"; 
 
     this.router.navigate(["/main-page"]);
-=======
-    
->>>>>>> ab88b4a321733146bc402a2e0538c9aee030de2f
-
   }
 
   ngOnInit(): void {
