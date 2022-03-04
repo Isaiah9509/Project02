@@ -43,9 +43,9 @@ export class LoginComponent implements OnInit {
 
     });
       this.userService.user$.next(this.userService.user);
-      // window.location.href="/main-page";
+      // window.location.href="/main-page"; 
 
-    })
+    
 
     this.router.navigate(["/main-page"]);
 

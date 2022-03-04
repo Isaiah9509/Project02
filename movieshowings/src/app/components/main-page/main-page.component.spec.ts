@@ -8,7 +8,7 @@ import {IMovie} from '../../interfaces/imovie';
 import { By } from '@angular/platform-browser';
 import { ITicket } from 'src/app/interfaces/ITicket';
 
-class MockMovieService {
+class MockMovieServiceervice {
   movie: Subject<IMovie[]> = new Subject<IMovie[]>(); 
 
   getMovies() {
