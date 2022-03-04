@@ -33,10 +33,8 @@ public class Purchase {
     @JsonIgnore
     private User owner;
 
-    @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "purchase")
     private List<Ticket> tickets = new ArrayList<Ticket>();
-
-
 
     public Purchase() {}
 

@@ -43,7 +43,6 @@ public class Ticket {
     public Ticket() {
     }
 
-
     public Ticket(int id, String movieTitle, double price, String genre, String showTimeSlot, String showTime, Purchase purchase, User owner) {
         this.id = id;
         this.movieTitle = movieTitle;
@@ -53,6 +52,20 @@ public class Ticket {
         this.showTime = showTime;
         this.purchase = purchase;
         this.owner = owner;
+    }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", movieTitle='" + movieTitle + '\'' +
+                ", price=" + price +
+                ", genre='" + genre + '\'' +
+                ", showTimeSlot='" + showTimeSlot + '\'' +
+                ", showTime='" + showTime + '\'' +
+                ", purchase=" + purchase +
+                ", owner=" + owner +
+                '}';
     }
 
     public int getId() {

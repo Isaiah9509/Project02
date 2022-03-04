@@ -45,19 +45,14 @@ export class LoginComponent implements OnInit {
       this.userService.user$.next(this.userService.user);
       // window.location.href="/main-page"; 
 
-    
-
     this.router.navigate(["/main-page"]);
 
   }
 
-  constructor(private userService:UserService, private router: Router) { }
-
   ngOnInit(): void {
-
   }
 
-  
+  constructor(private userService:UserService, private router: Router){ }
 
   getCookie(cname:any) {
     let name = cname + "=";
