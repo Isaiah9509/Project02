@@ -11,6 +11,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.mail.MessagingException;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -50,7 +52,7 @@ public class PurchaseController {
 
     @PostMapping("/{ownerId}")
     @ResponseBody
-    public Purchase createPurchase(@RequestBody Purchase purchase, @PathVariable("ownerId")String ownerId) {
+    public Purchase createPurchase(@RequestBody Purchase purchase, @PathVariable("ownerId")String ownerId) throws MessagingException, IOException {
         System.out.println("Made it to back end! Inside createPurchase");
         purchase.setOwner(us.getUserById(Integer.parseInt(ownerId)));
 

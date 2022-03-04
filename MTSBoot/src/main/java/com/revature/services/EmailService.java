@@ -1,70 +1,72 @@
 package com.revature.services;
-import com.revature.models.*;
 
-import java.util.*;
-import javax.mail.*;
-import javax.mail.internet.*;
-import javax.activation.*;
+import java.io.IOException;
+import java.util.Date;
+import java.util.Properties;
 
-public class EmailService
-{
-    String smtpServer = "smtp.gmail.com";
-    String to;
-    String from = "germygrimes@gmail.com";
-    String subject = "Thank You For Your Purchase!";
-    String body;
-    int userId;
-    User u;
-    PurchaseService ps;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.Multipart;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.AddressException;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
-    EmailService(){}
+import com.revature.models.Purchase;
 
-    EmailService(String smtpServer, String to, String from, String subject, String body) {
-        this.smtpServer = smtpServer;
-        this.to = to;
-        this.from = from;
-        this.subject = subject;
-        this.body = body;
+public class EmailService {
+
+    private static String from;
+    private static String pass;
+    private static Session session;
+
+    static {
+        pass = System.getenv("supersecret561");
+        from = System.getenv("ravenclawrevature@yahoo.com");
+        Properties props = new Properties();
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.host", "smtp.mail.yahoo.com");
+        props.put("mail.smtp.port", "587");
+        session = Session.getInstance(props, new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+                return new PasswordAuthentication(from, pass);
+            }
+        });
     }
 
-    //smtpServer and from should always be the same, so don't need them
-    EmailService(String to, String body) {
-        this.to = to;
-        this.body = body;
+    public EmailService() {
     }
 
-    public void getEmailInfo(){
-        to = u.getEmail();
+    public static void sendmail(Purchase p) throws AddressException, MessagingException, IOException {
+        String emailto = p.getOwner().getEmail();
+        Message msg = new MimeMessage(session);
+        msg.setFrom(new InternetAddress(from, false));
+
+        msg.setRecipients(Message.RecipientType.TO, InternetAddress.parse(emailto));
+        msg.setSubject("Thanks for your ticket purchase");
+        msg.setContent("You made a ticket purchase", "text/html");
+        msg.setSentDate(new Date());
+
+        MimeBodyPart messageBodyPart = new MimeBodyPart();
+        String message =
+                "Name: " + p.getOwner().getFirst() + " " + p.getOwner().getLast() +
+                "\nMovie: " + p.getTickets().get(0).getMovieTitle() +
+                "\nPrice: " + p.getPrice(p) +
+                "\nPurchase Date: " + p.getPurchaseDate();
+        messageBodyPart.setContent(message, "text/html");
+
+        Multipart multipart = new MimeMultipart();
+        multipart.addBodyPart(messageBodyPart);
+        // MimeBodyPart attachPart = new MimeBodyPart();
+
+        // attachPart.attachFile("/var/tmp/image19.png");
+        // multipart.addBodyPart(attachPart);
+        msg.setContent(multipart);
+        Transport.send(msg);
     }
-
-    public void setBody() {
-        List<Ticket> tickets = ps.getPurchaseById(userId).getTickets();
-
-        body = "Thank you, " + u.getFirst() + "for your purchase of " + tickets.size() + "tickets to see " +
-                tickets.get(0).getMovieTitle() + "on " + tickets.get(0).getShowTime() + ". Enjoy the movie!";
-    }
-
-    public void send(){
-        setBody();
-        String host = "localhost";//or IP address
-
-        //Get the session object
-        Properties properties = System.getProperties();
-        properties.setProperty("smtp.gmail.com", host);
-        Session session = Session.getDefaultInstance(properties);
-
-        //compose the message
-        try{
-            MimeMessage message = new MimeMessage(session);
-            message.setFrom(new InternetAddress(from));
-            message.addRecipient(Message.RecipientType.TO,new InternetAddress(to));
-            message.setSubject(subject);
-            message.setText(body);
-
-            // Send message
-            Transport.send(message);
-            System.out.println("message sent successfully....");
-
-        }catch (MessagingException mex) {mex.printStackTrace();}
-    }
-}  
+}

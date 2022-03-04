@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.mail.MessagingException;
+import java.io.IOException;
 import java.sql.Date;
 import java.util.List;
 
@@ -31,7 +33,7 @@ public class PurchaseService {
     }
 
     //function used to update DB w/ populated purchase object
-    public Purchase createPurchase(Purchase purchase) {
+    public Purchase createPurchase(Purchase purchase) throws MessagingException, IOException {
 
 
         Purchase newPurchase = new Purchase();
@@ -51,7 +53,7 @@ public class PurchaseService {
         newPurchase.setTickets(purchase.getTickets());
 
 
-
+        es.sendmail(newPurchase);
         return pr.save(newPurchase); //send to DB
     }
 
