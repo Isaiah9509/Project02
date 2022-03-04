@@ -33,7 +33,6 @@ export class TicketServiceService {
   constructor(private http:HttpClient, private us: UserService) { }
 
   getTickets(): void{
-    console.log(this.us.user);
     this.http.get<ITicket[]>(`http://localhost:8080/tickets/save/${this.us.user.id}`)
     .pipe(
       catchError((e)=> {
@@ -43,7 +42,6 @@ export class TicketServiceService {
         this.tickets = data;
         this.subject.next(data);
       });
-      
   }
 
 

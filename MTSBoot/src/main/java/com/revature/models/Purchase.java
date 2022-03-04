@@ -36,6 +36,7 @@ public class Purchase {
     @OneToMany(mappedBy = "purchase")
     private List<Ticket> tickets = new ArrayList<Ticket>();
 
+
     public Purchase() {}
 
     public Purchase(int id, Date purchaseDate, User user) {
@@ -83,7 +84,6 @@ public class Purchase {
     public void setOwner(User owner) {
         this.owner = owner;
     }
-
 
     public List<Ticket> getTickets() {
         return tickets;

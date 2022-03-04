@@ -1,4 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { Router } from '@angular/router';
 import { IUser } from 'src/app/interfaces/IUser';
 import { UserService } from 'src/app/services/user.service';
 
@@ -38,13 +39,16 @@ export class RegisterComponent implements OnInit {
     //connecting to userservice 
     this.userService.register(user)
     .subscribe(data => {
-      console.log(data);
+      if(data != null){
+        alert("Successful account creation, please login");
+        this.router.navigate(["/login"]);
+      }
     })
     
   }
 
   
-  constructor(private userService:UserService) { }
+  constructor(private userService:UserService, private router:Router) { }
 
   ngOnInit(): void {
   }
