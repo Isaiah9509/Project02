@@ -46,4 +46,24 @@ describe('RegisterComponent', () => {
     expect(component).toBeTruthy();
   });
 
+  it('should have a proper initial state', () => {
+    expect(component.ngOnInit).toBeTruthy();
+    expect(component.first).toBeFalsy();
+    expect(component.last).toBeFalsy();
+    expect(component.email).toBeFalsy();
+    expect(component.password).toBeFalsy();
+  });
+
+  it('should be true onSubmit()', () => {
+    expect(component.onSubmit).toBeTruthy();
+  });
+
+  it('should call register in the UserService', () => {
+    let service = fixture.debugElement.injector.get(UserService);
+    let serviceSpy = spyOn(service, 'register').and.callThrough();
+
+    component.onSubmit();
+
+    expect(serviceSpy).toHaveBeenCalled();
+  });
 });

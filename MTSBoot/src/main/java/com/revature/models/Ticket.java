@@ -31,18 +31,17 @@ public class Ticket {
     private String showTime;
 
     @ManyToOne(fetch =FetchType.LAZY)
-    @JoinColumn(name="purchase_id")
+    @JoinColumn(name="purchase")
     @JsonIgnore
     public Purchase purchase;
 
-    @ManyToOne(fetch =FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name="owner")
     @JsonIgnore
     private User owner;  //unique, null.
 
     public Ticket() {
     }
-
 
     public Ticket(int id, String movieTitle, double price, String genre, String showTimeSlot, String showTime, Purchase purchase, User owner) {
         this.id = id;
@@ -54,6 +53,7 @@ public class Ticket {
         this.purchase = purchase;
         this.owner = owner;
     }
+
 
     public int getId() {
         return id;

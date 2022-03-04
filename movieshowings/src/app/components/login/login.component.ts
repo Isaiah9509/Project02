@@ -21,44 +21,41 @@ export class LoginComponent implements OnInit {
     //connect to userService
     this.userService.login(this.email, this.password)
     .subscribe(data => {
+      console.log(data);
       if(data == null){
         alert("Invalid login, please try again");
-        window.location.href="/login";
+        this.router.navigate(["/login"]);
       } else {
-        document.cookie = `id=` + data.id;
-      }
+      document.cookie = `id=` + data.id;
       let email2 = "";
       let password2 = "";
-      if(data.email) {
-        email2 = data.email;
-      }
-      if(data.password) {
-        password2 = data.password;
-      }
+
+      email2 = data.email;
+      password2 = data.password;
+
       this.userService.user = {
         email: email2,
         password: password2,
         id: data.id
-      };
-      this.userService.user$.next(this.userService.user);
-      // window.location.href="/main-page";
 
-    })
-
+      }
+        
+    this.userService.user$.next(this.userService.user);
     this.router.navigate(["/main-page"]);
+    }
+
+    });
+    
 
   }
-
-  constructor(private userService:UserService, private router: Router) { }
 
   ngOnInit(): void {
-
   }
 
-  
+  constructor(private userService:UserService, private router: Router){ }
 
-  getCookie(cname:any) {
-    let name = cname + "=";
+  getCookie(c_name:any) {
+    let name = c_name + "=";
     let decodedCookie = decodeURIComponent(document.cookie);
     let ca = decodedCookie.split(';');
     for(let i = 0; i <ca.length; i++) {

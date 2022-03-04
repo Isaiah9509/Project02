@@ -14,19 +14,11 @@ import java.util.List;
 @Repository
 public interface PurchaseRepository extends JpaRepository<Purchase, Integer> {
     List<Purchase> findAllByOwner(User user);
-     Purchase save(Purchase purchase);
-      Purchase getById(int id);
-      double getPurchasePriceById(int id);
-   // void delete(Purchase purchase);
-      List<Ticket> getAllTicketsById(int id);
-//    List<Ticket> findAllTicketsByPurchase(Purchase purchase);
-   //   void setId(int id);
-/*
-    @Modifying
-    @Query("update Purchase p set p.owner = ?1")
-    void setOwner(User u);
-*/
-  //    void setOwner(int ownerId);
+
+
+    Purchase getById(int id);
+    double getPurchasePriceById(int id);
+    List<Ticket> getAllTicketsById(int id);
 
       @Modifying
       @Query("update Ticket t set t.purchase = ?1 where t.id = ?2")

@@ -9,6 +9,7 @@ import { ITicket } from 'src/app/interfaces/ITicket';
 import { Router, NavigationExtras } from '@angular/router';
 import { IPurchase } from '../../interfaces/IPurchase';
 import { SetAndGetTicketsService } from '../../services/set-and-get-tickets.service';
+import { TicketServiceService } from 'src/app/services/ticket-service.service';
 //import { LocalStorageService } from 'src/app/services/local-storage-services.service'
 
 @Component({
@@ -29,7 +30,7 @@ export class PurchaseComponent implements OnInit {
   }
 
    // constructor() { }
-  constructor(private purchaseService: PurchaseService, private router: Router, private get: SetAndGetTicketsService) { }
+  constructor(private purchaseService: PurchaseService, private router: Router, private get: SetAndGetTicketsService, private ticketService:TicketServiceService) { }
 
   ngOnInit(): void {
     this.getTheSelectedTickets();
@@ -43,6 +44,11 @@ export class PurchaseComponent implements OnInit {
     genre: "",
     showTime: "",
     showTimeSlot: "",
+    owner: {
+      id: "",
+      email: "",
+      password: ""
+    },
   }
 
   ticketsForPurchase: ITicket[] = [];
@@ -50,7 +56,7 @@ export class PurchaseComponent implements OnInit {
   purchase: IPurchase = {
     id: 0,
     price: 0,
-    ticket: [],
+    tickets: [],
     owner: {
       id: "",
       email: "",
@@ -99,7 +105,7 @@ export class PurchaseComponent implements OnInit {
   }
 
   sendPurchase() {
-    this.purchase.ticket = this.ticketsForPurchase;
+    this.purchase.tickets = this.ticketsForPurchase;
     //set owner info
     this.purchase.owner.id = this.getCookie("id");
     this.purchase.owner.email = this.getCookie("email");
@@ -107,11 +113,26 @@ export class PurchaseComponent implements OnInit {
 
 
     console.log("called sendPurchase");
-    console.log(this.purchase);
+    console.log(this.purchase.tickets);
 
     this.purchaseService.sendPurchase(this.purchase, this.purchase.owner.id)
       .subscribe((data) => {
         console.log(data);
+
+        if(data.id){
+        let id = data.id;
+        let purchaseID = id.toString();
+        let ownerID = this.getCookie("id");
+
+          for(var i = 0; i < data.tickets.length; i++){
+            this.ticketService.updateTickets(data.tickets[i], purchaseID, ownerID)
+        .subscribe((data) => {
+          console.log(data);
+        })
+          }
+        
+      }
+
       })
    // this.purchaseService.doPurchase(this.purchase);
 

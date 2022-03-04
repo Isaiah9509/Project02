@@ -53,14 +53,16 @@ public class PurchaseController {
     public Purchase createPurchase(@RequestBody Purchase purchase, @PathVariable("ownerId")String ownerId) {
         System.out.println("Made it to back end! Inside createPurchase");
         purchase.setOwner(us.getUserById(Integer.parseInt(ownerId)));
-       // pr.setOwner(us.getUserById(Integer.parseInt(ownerId)));
-        System.out.println(purchase);
 
-        //How do I "unsave" ticket now that it has been purchased?
 
         return ps.createPurchase(purchase);
     }
 
+    @GetMapping("/")
+    @ResponseBody
+    public List<Purchase> getAllPurchases(){
+        return ps.getAllPurchases();
+    }
 
     @GetMapping("/user/{id}")
     @ResponseBody

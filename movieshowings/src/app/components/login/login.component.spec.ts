@@ -41,4 +41,24 @@ describe('LoginComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have a proper initial state', () => {
+    expect(component.ngOnInit).toBeTruthy();
+    expect(component.error).toBeFalsy();
+    expect(component.email).toBeFalsy();
+    expect(component.password).toBeFalsy();
+  });
+
+  it('should be true onSubmit()', () => {
+    expect(component.onSubmit).toBeTruthy();
+  });
+
+  it('should call login in the UserService', () => {
+    let service = fixture.debugElement.injector.get(UserService);
+    let serviceSpy = spyOn(service, 'login').and.callThrough();
+
+    component.onSubmit();
+
+    expect(serviceSpy).toHaveBeenCalled();
+  });
 });

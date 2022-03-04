@@ -18,8 +18,6 @@ import java.util.List;
 public class PurchaseService {
     private PurchaseRepository pr;
     private EmailService es;
-    private TicketRepository tr;
-    private TicketService ts;
 
     public PurchaseService() {}
 
@@ -28,23 +26,31 @@ public class PurchaseService {
         this.pr = pr;
     }
 
+    public List<Purchase> getAllPurchases(){
+        return pr.findAll();
+    }
+
     //function used to update DB w/ populated purchase object
     public Purchase createPurchase(Purchase purchase) {
-        System.out.println("inside PurchaseService.createPurchase()");
+
+
         Purchase newPurchase = new Purchase();
-        newPurchase.setOwner(purchase.getOwner());
+        newPurchase.setOwner(newPurchase.getOwner());
         Date date = new Date(System.currentTimeMillis());
         newPurchase.setPurchaseDate(date);
         newPurchase.setPrice(purchase.getPrice(purchase));
-        newPurchase.setTickets(purchase.getTickets());
-        //before returning, you should delete from saved tickets
+        newPurchase.setOwner(purchase.getOwner());
+//        //before returning, you should delete from saved tickets
+//
+////        for(int i = 0; i<newPurchase.getTickets().size(); i++){
+////            Ticket ticket = newPurchase.getTickets().get(i);
+////            ticket.setPurchase(newPurchase);
+////            tr.save(ticket);
+////        }
 
-        //set purchase field inside each ticket object to this purchase
-        for(int i = 0; i<newPurchase.getTickets().size(); i++){
-            Ticket ticket = newPurchase.getTickets().get(i);
-            ticket.setPurchase(newPurchase);
-            pr.setPurchaseFieldForTicketItem(newPurchase, ticket.getId());
-        }
+        newPurchase.setTickets(purchase.getTickets());
+
+
 
         return pr.save(newPurchase); //send to DB
     }

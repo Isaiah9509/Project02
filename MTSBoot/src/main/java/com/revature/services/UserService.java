@@ -3,6 +3,7 @@ package com.revature.services;
 import com.revature.exceptions.NotAValidLogin;
 import com.revature.models.Ticket;
 import com.revature.models.User;
+import com.revature.repository.TicketRepository;
 import com.revature.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

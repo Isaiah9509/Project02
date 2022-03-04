@@ -17,7 +17,6 @@ import java.util.List;
 @Transactional
 public class TicketService {
         private TicketRepository tr;
-        private UserRepository ur;
 
         @Autowired
         public TicketService(TicketRepository tr){
@@ -67,6 +66,17 @@ public class TicketService {
         public List<Ticket> getTicketsByUser(User user){
             return tr.findAllByOwner(user);
         }
+
+        public Ticket updateTicket(Ticket ticket, int purchaseID, int ownerID){
+            Purchase purchase = new Purchase();
+            User owner = new User();
+            owner.setId(ownerID);
+            purchase.setId(purchaseID);
+
+            ticket.setPurchase(purchase);
+            ticket.setOwner(owner);
+
+            return tr.save(ticket); }
 
     }
 

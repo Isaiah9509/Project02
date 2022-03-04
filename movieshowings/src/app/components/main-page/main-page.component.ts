@@ -1,7 +1,5 @@
-import { getInstructionStatements } from '@angular/compiler/src/render3/view/util';
 import { Component, OnInit } from '@angular/core';
-import { Subject } from 'rxjs';
-import { AppRoutingModule } from 'src/app/app-routing.module';
+import { Router } from '@angular/router';
 import { IMovie, IMovieDetail } from 'src/app/interfaces/imovie';
 import { ITicket } from 'src/app/interfaces/ITicket';
 import { MovieServiceService } from 'src/app/services/movie-service.service';
@@ -15,7 +13,7 @@ import { TicketServiceService } from 'src/app/services/ticket-service.service';
 })
 export class MainPageComponent implements OnInit {
 
-  constructor(private router:AppRoutingModule, private movieService:MovieServiceService, private ticketService:TicketServiceService, private get:SetAndGetTicketsService) { }
+  constructor(private router: Router, private movieService:MovieServiceService, private ticketService:TicketServiceService, private get:SetAndGetTicketsService) { }
 
   ngOnInit(): void {
     this.getMovies();

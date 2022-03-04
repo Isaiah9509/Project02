@@ -5,6 +5,6 @@ import { IUser } from '../interfaces/IUser';
 export interface IPurchase {
   id?: number;
   price: number;
-  ticket: ITicket[];
+  tickets: ITicket[];
   owner: IUser;
 }

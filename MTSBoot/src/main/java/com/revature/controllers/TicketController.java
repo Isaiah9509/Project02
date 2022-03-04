@@ -66,6 +66,13 @@ import java.util.List;
             return ts.createTicket(ticket);
         }
 
+        @PostMapping("/update/{purchaseID}/{ownerID}")
+        @ResponseBody
+        public Ticket updateTicketPurchase(@RequestBody Ticket ticket, @PathVariable int purchaseID,@PathVariable int ownerID){
+
+            return ts.updateTicket(ticket, purchaseID, ownerID);
+        }
+
         @PostMapping("/save/{id}")
         @ResponseBody
         public Ticket saveTicket(@RequestBody Ticket ticket, @PathVariable int id) {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import { UserService } from 'src/app/services/user.service';
 
+
 @Component({
   selector: 'nav-bar',
   templateUrl: './nav-bar.component.html',
@@ -14,7 +15,7 @@ export class NavBarComponent implements OnInit {
 
   ngOnInit(): void {
     this.us.user$.subscribe(user => {
-      if (user.id) {
+      if (user.id != undefined && user.id != null) {
         this.showLogin = false;
       } else {
         this.showLogin = true;
@@ -40,9 +41,17 @@ export class NavBarComponent implements OnInit {
   navigateLogout():void{
     this.us.logout().subscribe(()=> {
       this.router.navigate(['login']);
+
+      // We probably should only use the user$ observable to get the user data to detect when user logs in/out, ticket object is using this us.user
+      this.us.user = {
+        email: "",
+        password: "",
+      }
+      //navbar using this to see change
       this.us.user$.next({
        email:"", password:""
       });
+      
     });
   }
 

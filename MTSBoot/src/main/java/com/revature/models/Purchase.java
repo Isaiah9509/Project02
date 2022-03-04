@@ -28,32 +28,24 @@ public class Purchase {
     @Column(name="purchase_price", nullable = false)
     private double purchasePrice;
 
-    @ManyToOne() //removed @CascadeType.All
+    @ManyToOne(fetch = FetchType.LAZY) //removed @CascadeType.All
     @JoinColumn(name="owner")
     @JsonIgnore
     private User owner;
 
-
-    @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "purchase", cascade = CascadeType.MERGE)
     private List<Ticket> tickets = new ArrayList<Ticket>();
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public double getPurchasePrice() {
-        return purchasePrice;
-    }
-
-    public void setPurchasePrice(double purchasePrice) {
-        this.purchasePrice = purchasePrice;
-    }
 
     public Purchase() {}
+
+    public Purchase(int id, Date purchaseDate, double purchasePrice, User owner, List<Ticket> tickets) {
+        this.id = id;
+        this.purchaseDate = purchaseDate;
+        this.purchasePrice = purchasePrice;
+        this.owner = owner;
+        this.tickets = tickets;
+    }
 
     public Purchase(int id, Date purchaseDate, User user) {
         this.id = id;
@@ -101,12 +93,27 @@ public class Purchase {
         this.owner = owner;
     }
 
-
     public List<Ticket> getTickets() {
         return tickets;
     }
 
     public void setTickets(List<Ticket> tickets) {
         this.tickets = tickets;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public double getPurchasePrice() {
+        return purchasePrice;
+    }
+
+    public void setPurchasePrice(double purchasePrice) {
+        this.purchasePrice = purchasePrice;
     }
 }

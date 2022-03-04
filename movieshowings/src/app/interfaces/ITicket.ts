@@ -1,3 +1,4 @@
+import { IPurchase } from "./IPurchase";
 import { IUser } from "./IUser";
 
 

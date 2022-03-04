@@ -83,7 +83,7 @@ public class UserController {
             response.addCookie(cookie);
             return test;
         }
-        return u;
+        return null;
     }
 
     //THis is used to log a user out.

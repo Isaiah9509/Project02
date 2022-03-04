@@ -1,5 +1,7 @@
 package com.revature.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,16 +29,17 @@ public class User {
     @Column(name="last_name", nullable = false)
     private String last;
 
-    @Column(name="email", nullable = false)
+    @Column(name="email", nullable = false, unique=true)
     private String email;
 
-    @Column(name="password", nullable = false)
+    @Column(name="password", nullable = false, unique=true)
     private String password;
 
     @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @JsonIgnore
     private List<Purchase> purchases = new ArrayList<>();
 
-    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.MERGE)
     private List<Ticket> tickets = new ArrayList<>();
 
     public User(){
@@ -50,12 +53,14 @@ public class User {
         this.password = password;
     }
 
-    public List<Purchase> getPurchases() {
-        return purchases;
-    }
-
-    public void setPurchases(List<Purchase> purchases) {
+    public User(int id, String first, String last, String email, String password, List<Purchase> purchases, List<Ticket> tickets) {
+        this.id = id;
+        this.first = first;
+        this.last = last;
+        this.email = email;
+        this.password = password;
         this.purchases = purchases;
+        this.tickets = tickets;
     }
 
     public int getId() {
@@ -98,15 +103,20 @@ public class User {
         this.password = password;
     }
 
-
-    @Override
-    public String toString() {
-        return "User{" +
-                "id=" + id +
-                ", first='" + first + '\'' +
-                ", last='" + last + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                '}';
+    public List<Purchase> getPurchases() {
+        return purchases;
     }
+
+    public void setPurchases(List<Purchase> purchases) {
+        this.purchases = purchases;
+    }
+
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
+
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
 }
