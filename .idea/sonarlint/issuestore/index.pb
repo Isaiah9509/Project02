@@ -15,13 +15,9 @@ s
 CMTSBoot/src/main/java/com/revature/repository/TicketRepository.java,a\6\a6dbaa427ed334c39f05b1829d702b872edf47bb
 l
 <MTSBoot/src/main/java/com/revature/services/UserService.java,6\a\6a1a57803855f8aca6731620fa2eb6d3e5fe58be
-n
->MTSBoot/src/main/java/com/revature/services/TicketService.java,d\f\df764bf60022544a447fc09301a228447832e727
 ]
 -movieshowings/src/app/interfaces/IPurchase.ts,5\e\5ee627d5515c2119f64ee6307be00bc32bc1ce4b
 g
 7MTSBoot/src/main/java/com/revature/models/Purchase.java,3\d\3d0f6ad8694e280cfbed410cfe8f8ce930ac8a1f
 u
 EMTSBoot/src/main/java/com/revature/repository/PurchaseRepository.java,c\1\c1d6c037c184d92dfe17bafbd19ff95e22024de3
-p
-@MTSBoot/src/main/java/com/revature/services/PurchaseService.java,0\1\015d46336194c76b1b72a21977f59c5f0d364eb0

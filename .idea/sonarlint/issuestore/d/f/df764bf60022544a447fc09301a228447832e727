@@ -1,11 +1,0 @@
-
-Q	java:S125"<This block of commented-out lines of code should be removed.(éÏÔ¼
-V
-java:S1128"9Remove this unused import 'com.revature.models.Purchase'.(êë€´8×Áìõ/
-c
-java:S1128	"ARemove this unused import 'org.springframework.data.domain.Sort'.(ëÿ€ëøÿÿÿÿ8ÙÁìõ/
-H
-java:S1128"+Remove this unused import 'java.util.Date'.(¸…¼ü8ÚÁìõ/
-<
-java:S1068"&Remove this unused "ur" private field.(•¯”ü
-f	java:S117-"QRename this local variable to match the regular expression '^[a-z][a-zA-Z0-9]*$'.(ê–¬

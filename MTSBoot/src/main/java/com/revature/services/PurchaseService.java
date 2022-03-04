@@ -30,14 +30,17 @@ public class PurchaseService {
 
     //function used to update DB w/ populated purchase object
     public Purchase createPurchase(Purchase purchase) {
+        System.out.println("inside PurchaseService.createPurchase()");
         Purchase newPurchase = new Purchase();
-        newPurchase.setOwner(newPurchase.getOwner());
+        newPurchase.setOwner(purchase.getOwner());
         Date date = new Date(System.currentTimeMillis());
         newPurchase.setPurchaseDate(date);
         newPurchase.setPrice(purchase.getPrice(purchase));
         newPurchase.setOwner(purchase.getOwner());
+        newPurchase.setTickets(purchase.getTickets());
         //before returning, you should delete from saved tickets
 
+        //set purchase field inside each ticket object to this purchase
         for(int i = 0; i<newPurchase.getTickets().size(); i++){
             Ticket ticket = newPurchase.getTickets().get(i);
             ticket.setPurchase(newPurchase);
