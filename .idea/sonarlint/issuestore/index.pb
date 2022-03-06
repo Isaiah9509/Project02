@@ -3,8 +3,6 @@ q
 Amovieshowings/src/app/components/purchase/purchase.component.html,9\1\910b2d6b36847a87d0bc8315e28ccde2ac8015b4
 G
 MTSBoot/settings.gradle,6\1\610d718ab1ab8e78d54ffef556cda608b11fc0d6
-D
-MTSBoot/build.gradle,f\6\f616c20162e03e27a33cb4540ab50e64ce6bff09
 q
 AMTSBoot/src/main/java/com/revature/repository/UserRepository.java,9\a\9ae50fa931843ce2c36bd24c0f1ddc69df374f68
 s
@@ -13,3 +11,15 @@ l
 <MTSBoot/src/main/java/com/revature/services/UserService.java,6\a\6a1a57803855f8aca6731620fa2eb6d3e5fe58be
 ]
 -movieshowings/src/app/interfaces/IPurchase.ts,5\e\5ee627d5515c2119f64ee6307be00bc32bc1ce4b
+o
+?movieshowings/src/app/components/purchase/purchase.component.ts,1\4\1474d02f55e19763053d7bad481bb2000e17e31e
+j
+:movieshowings/src/app/services/purchase-service.service.ts,5\f\5f6ec6e91c1cfe2ace624aa0fc8b1c862a281c6f
+r
+BMTSBoot/src/main/java/com/revature/controllers/UserController.java,e\c\ec8f1f76decfc18e4b83504366d0cb9e9a4fb304
+t
+DMTSBoot/src/main/java/com/revature/controllers/TicketController.java,2\8\28acfa3cf067f77eb963b1e8aaecd49dfa7259c7
+u
+EMTSBoot/src/main/java/com/revature/repository/PurchaseRepository.java,c\1\c1d6c037c184d92dfe17bafbd19ff95e22024de3
+c
+3MTSBoot/src/main/java/com/revature/models/User.java,e\8\e898716923c429b6de576c5612192deb8feef396

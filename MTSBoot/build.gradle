@@ -8,6 +8,12 @@ group = 'com.example'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'
 
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -15,13 +21,22 @@ repositories {
 dependencies {
     implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'org.springframework.boot:spring-boot-starter-web'
+    implementation 'org.jetbrains:annotations:20.1.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     implementation 'org.springframework.boot:spring-boot:2.6.1'
     runtimeOnly 'org.postgresql:postgresql'
-    implementation group: 'javax.mail', name: 'javax.mail-api', version: '1.6.2'
-    implementation group: 'com.sun.mail', name: 'javax.mail', version: '1.5.1'
+    implementation 'com.sun.mail:javax.mail:1.6.2'
 
 
+}
+jar {
+    duplicatesStrategy = 'include'
+    from {
+        configurations.runtimeClasspath.collect{ it.isDirectory() ? it : zipTree (it) }
+    }
+    manifest {
+        attributes "Main-Class" : 'revature.App'
+    }
 }
 
 

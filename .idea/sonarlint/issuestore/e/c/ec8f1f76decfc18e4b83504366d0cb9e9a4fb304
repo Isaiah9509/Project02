@@ -1,0 +1,24 @@
+
+]
+java:S4684."@Replace this persistent entity with a simple POJO or DTO object.(¦¾Ø8ë®µõ/
+b
+java:S46846"@Replace this persistent entity with a simple POJO or DTO object.(ñö©øÿÿÿÿ8û®µõ/
+U	java:S1067"9Replace this use of System.out or System.err by a logger.(Ø¼¢ƒ8û®µõ/
+b
+java:S4684G"@Replace this persistent entity with a simple POJO or DTO object.(ÜÁ¦şÿÿÿÿ8‹¯µõ/
+Z	java:S106I"9Replace this use of System.out or System.err by a logger.(–¾–ùúÿÿÿÿ8‹¯µõ/
+T	java:S106L"9Replace this use of System.out or System.err by a logger.(Äş!8‹¯µõ/
+e
+java:S1128"HRemove this unused import 'com.fasterxml.jackson.databind.ObjectMapper'.(´‘¨™8š¯µõ/
+e
+java:S1128"CRemove this unused import 'com.revature.repository.UserRepository'.(¤ûÁÿÿÿÿÿ8š¯µõ/
+X
+java:S1128";Remove this unused import 'javax.servlet.http.HttpSession'.(í¨ô8š¯µõ/
+M
+java:S1128"0Remove this unused import 'java.util.ArrayList'.(÷‰îƒ8š¯µõ/
+O
+java:S1128"-Remove this unused import 'java.util.Locale'.(åğ×±ûÿÿÿÿ8š¯µõ/
+v
+java:S2293:"YReplace the type specification in this constructor call with the diamond operator ("<>").(™¾…é8š¯µõ/
+{
+java:S2293a"YReplace the type specification in this constructor call with the diamond operator ("<>").(ôßæ×ùÿÿÿÿ8î•Ó”õ/
