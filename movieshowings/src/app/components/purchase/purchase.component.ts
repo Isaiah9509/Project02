@@ -10,7 +10,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { IPurchase } from '../../interfaces/IPurchase';
 import { SetAndGetTicketsService } from '../../services/set-and-get-tickets.service';
 import { TicketServiceService } from 'src/app/services/ticket-service.service';
-//import { LocalStorageService } from 'src/app/services/local-storage-services.service'
+
 
 @Component({
   selector: 'purchase',
@@ -18,8 +18,6 @@ import { TicketServiceService } from 'src/app/services/ticket-service.service';
   styleUrls: ['./purchase.component.css']
 })
 export class PurchaseComponent implements OnInit {
-
- // @Output() purchase = new EventEmitter();
 
   selectAllTicketsState: boolean = false;
 
@@ -29,7 +27,7 @@ export class PurchaseComponent implements OnInit {
     this.hide = !this.hide;
   }
 
-   // constructor() { }
+
   constructor(private purchaseService: PurchaseService, private router: Router, private get: SetAndGetTicketsService, private ticketService:TicketServiceService) { }
 
   ngOnInit(): void {
@@ -126,88 +124,18 @@ export class PurchaseComponent implements OnInit {
 
           for(var i = 0; i < data.tickets.length; i++){
             this.ticketService.updateTickets(data.tickets[i], purchaseID, ownerID)
-        .subscribe((data) => {
-          console.log(data);
-        })
+              .subscribe((data) => {
+              console.log(data);
+            })
           }
         
-      }
+       }
 
-      })
-   // this.purchaseService.doPurchase(this.purchase);
-
-    
-    alert("Thank you for your purchase. Enjoy your movie!")
-
-    //this.router.navigate(["/main-page"]);
-
-    //   const selectedTickets = this.tickets.filter(item => item.addToPurchase);
-    //   const navigationExtras: NavigationExtras = {
-    //     state: {
-    //       selectedTickets
-    //     }
-    //   };
-    //   this.router.navigate(["/user-page"], navigationExtras );
+   })
+      
+   alert("Thank you for your purchase. Enjoy your movie!")
+   
   }
-
-
-
-  /* I guess I don't need this function anymore...
-    onSubmit(): void {
-        console.log(this.ticketInfo);
-
-        //connect to purchaseService
-        this.purchaseService.purchase(this.purchaseID, this.userID)
-            .subscribe(data => {
-                let movieName2 = "";
-                let tPrice = 0;
-                let tQuant = 0;
-                let tDateandTime = "";
-                let userID = 0;
-                let purchaseID = 0;
-                if (data.userID) {
-                    userID = data.userID;
-                }
-                if (data.purchaseID) {
-                purchaseID = data.purchaseID;
-                }
-
-                this.purchaseService.ticket = {
-                    movieName: movieName2,
-                    price: tPrice,
-                    quantity: tQuant,
-                    show_date_and_time: tDateandTime
-                };
-            });
-    }
-    */
-
-  /* I guess I don't need this anymore either...
-  sendPurchase2(): void {
-
-    this.purchaseService.purchase(this.purchaseID, this.userID);
-
-
-    const message = {
-      from: "sender@MovieTheater.com",
-      to: this.userEmail,
-      subject: "Purchase Confirmation",
-      text: "Thank you for your purchase! A purchase of " + this.purchaseTotalAmt + " was made on " +
-        this.purchasedDate + ". Enjoy your movie!",
-    }
-
-   // this.transporter.sendMail(message); //hopefully this sends email to this.userEmail
-
-
-    alert("Thank you for your purchase. Enjoy your movie!")
-
-    this.purchaseTotalAmt = 0;
-    this.purchasedDate = new Date();
-
-
-  }
-  */
-
 
 }
 
