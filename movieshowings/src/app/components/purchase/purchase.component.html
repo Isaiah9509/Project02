@@ -1,41 +1,15 @@
-<!-- This is what I had before. But changed it to something similar to what Amy has in her saved-tickets
-<body>
-  <div class="container-fluid2">
-    <h3 id="userFirst"><b>Welcome </b> {{userFirst}}</h3>
-    <h2>Select tickets for purchase</h2>
-    <form>
-      <p class="col-1" id="ticketMovieName"><b>Movie:</b> {{ticketMovieName}}</p>
-      <p class="col-1" id="ticketDateAndTime"><b>Showing Date and Time:</b> {{ticketDateAndTime}}</p>
-      <p class="col-1" id="ticketPrice"><b>Price per Ticket:</b> {{ticketPrice}}</p>
-      <p class="col-1" id="ticketQuantity"><b>Number of Tickets:</b> {{ticketQuantity}}</p>
-      <p class="col-1" id="purchaseTotalAmt"><b>Total Cost:</b> {{purchaseTotalAmt}}</p>
-    </form>
-  </div>
-  <button class="purchase-btn" (click)="sendPurchase()">Make Purchase</button>
-
-
-  
-</body>
--->
-
 <body>
   <div class="container-fluid2">
     <div id="purchase-container">
       <h3 id="userFirst"><b>Purchase Your Tickets </b> </h3>
-      <!--
-    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault" (click)="selectAllTickets()">
-    <label class="form-check-label" for="flexCheckDefault">
-      Select All
-    </label>
-      -->
+      
 
       <div class="table-container">
         <table class="table table-hover">
           <thead>
             <tr>
 
-              <!--<th scope="col">-->
-              <!--</th>-->
+             
               <th scope="col">Movie</th>
               <th scope="col">Genre</th>
               <th scope="col">Price</th>
@@ -54,8 +28,7 @@
           </tbody>
           <br>
         </table>
-        <!-- <p id="userEmail"><b>A confirmation email will be sent to :</b> {{userEmail}}</p>
-       <a href="mailto:{{userEmail}}">Confirmation of Purchase E-mail</a>-->
+       
 
         <p class="col-1" id="purchaseTotalAmt"><b>Total Cost: $ {{purchase.price}}</b></p>
         <input type="submit" class="btn btn-log btn-block our-btn" value="Purchase" (click)="sendPurchase()" />
