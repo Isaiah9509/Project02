@@ -41,13 +41,7 @@ public class PurchaseService {
         newPurchase.setPurchaseDate(date);
         newPurchase.setPrice(purchase.getPrice(purchase));
         newPurchase.setOwner(purchase.getOwner());
-//        //before returning, you should delete from saved tickets
-//
-////        for(int i = 0; i<newPurchase.getTickets().size(); i++){
-////            Ticket ticket = newPurchase.getTickets().get(i);
-////            ticket.setPurchase(newPurchase);
-////            tr.save(ticket);
-////        }
+
 
         newPurchase.setTickets(purchase.getTickets());
 
@@ -59,11 +53,7 @@ public class PurchaseService {
     public Purchase getPurchaseById(int id) {
         return pr.getById(id);
     }
-/*
-    public void setPurchaseId(int id) {
-        pr.setId(id);
-    }
-*/
+
 
     //get total cost
 
