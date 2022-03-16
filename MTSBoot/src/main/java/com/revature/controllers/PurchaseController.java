@@ -34,19 +34,6 @@ public class PurchaseController {
         this.ts = ts;
     }
 
-  /*
-    @PostMapping("/")
-    @ResponseBody
-    public Purchase createPurchase(@RequestBody Purchase purchase) {
-        System.out.println("Made it to back end! Inside createPurchase");
-
-        User owner = new User();
-     //   owner.setId(id);
-        purchase.setOwner(owner);
-        return ps.createPurchase(purchase);
-
-    }
-*/
 
     @PostMapping("/{ownerId}")
     @ResponseBody
